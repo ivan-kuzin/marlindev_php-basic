@@ -32,11 +32,33 @@
                     </div>
                     <div class="panel-container show">
                         <div class="panel-content">
-                            <ol class="breadcrumb page-breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Главная</a></li>
-                                <li class="breadcrumb-item"><a href="#">PHP</a></li>
-                                <li class="breadcrumb-item active">Функции</li>
-                            </ol>
+
+                            <?php
+                                $pages = [
+                                    [
+                                        'link' => '#',
+                                        'title' => 'Главная'
+                                    ],
+                                    [
+                                        'link' => '#',
+                                        'title' => 'PHP'
+                                    ],
+                                    [
+                                        'link' => '#',
+                                        'title' => 'Функции'
+                                    ]
+                                ];
+                                echo '<ol class="breadcrumb page-breadcrumb">';
+                                foreach ($pages as $page){
+                                    if ( next( $pages ) ){
+                                        echo '<li class="breadcrumb-item"><a href="'. $page['link'] .'">'. $page['title'] .'</a></li>';
+                                    }else{
+                                        echo '<li class="breadcrumb-item active">'. $page['title'] .'</li>';
+                                    }
+                                }
+                                echo '</ol>';
+                            ?>
+
                         </div>
                     </div>
                 </div>
