@@ -43,20 +43,20 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <ul id="js-list-msg" class="list-group px-2 pb-2 js-list-filter">
-                                        <li class="list-group-item">
-                                            <span data-filter-tags="reports file">Reports</span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span data-filter-tags="analytics graphs">Analytics</span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span data-filter-tags="export download">Export</span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span data-filter-tags="storage">Storage</span>
-                                        </li>
-                                    </ul>
+                                    <?php
+                                        $tags = array(
+                                                array('title' => 'Reports', 'tags' => 'reports file'),
+                                                array('title' => 'Analytics', 'tags' => 'analytics graphs'),
+                                                array('title' => 'Export', 'tags' => 'export download'),
+                                                array('title' => 'Storage', 'tags' => 'storage')
+                                        );
+                                        //print_r($tags);
+                                        echo '<ul id="js-list-msg" class="list-group px-2 pb-2 js-list-filter">';
+                                        foreach ( $tags as $tag){
+                                            echo '<li class="list-group-item"><span data-filter-tags="' . $tag['tags'] . '">'.$tag['title'].'</li>';
+                                        }
+                                        echo '</ul>';
+                                    ?>
                                     <div class="filter-message js-filter-message mt-0 fs-sm"></div>
                                 </div>
                             </div>
