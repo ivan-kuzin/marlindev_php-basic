@@ -16,6 +16,11 @@
         <link rel="stylesheet" media="screen, print" href="css/fa-solid.css">
         <link rel="stylesheet" media="screen, print" href="css/fa-brands.css">
         <link rel="stylesheet" media="screen, print" href="css/fa-regular.css">
+    <style>
+        .panel-content .d-flex:first-child{
+            margin-top: .5rem !important;
+        }
+    </style>
     </head>
     <body class="mod-bg-1 mod-nav-link ">
         <main id="js-page-content" role="main" class="page-content">
@@ -32,34 +37,44 @@
                     </div>
                     <div class="panel-container show">
                         <div class="panel-content">
-                            <div class="d-flex mt-2">
-                                My Tasks
-                                <span class="d-inline-block ml-auto">130 / 500</span>
-                            </div>
-                            <div class="progress progress-sm mb-3">
-                                <div class="progress-bar bg-fusion-400" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="d-flex">
-                                Transfered
-                                <span class="d-inline-block ml-auto">440 TB</span>
-                            </div>
-                            <div class="progress progress-sm mb-3">
-                                <div class="progress-bar bg-success-500" role="progressbar" style="width: 34%;" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="d-flex">
-                                Bugs Squashed
-                                <span class="d-inline-block ml-auto">77%</span>
-                            </div>
-                            <div class="progress progress-sm mb-3">
-                                <div class="progress-bar bg-info-400" role="progressbar" style="width: 77%;" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="d-flex">
-                                User Testing
-                                <span class="d-inline-block ml-auto">7 days</span>
-                            </div>
-                            <div class="progress progress-sm mb-g">
-                                <div class="progress-bar bg-primary-300" role="progressbar" style="width: 84%;" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+                            <?php
+                                $items = [
+                                        1 => [
+                                                'title' => 'My Tasks',
+                                                'data' => '130 / 500',
+                                                'type' => 'bg-fusion-400',
+                                                'progress' => '65'
+                                        ],
+                                        2 => [
+                                                'title' => 'Transfered',
+                                                'data' => '440 TB',
+                                                'type' => 'bg-success-500',
+                                                'progress' => '34'
+                                        ],
+                                        3 => [
+                                            'title' => 'Bugs Squashed',
+                                            'data' => '77%',
+                                            'type' => 'bg-info-400',
+                                            'progress' => '77'
+                                        ],
+                                        4 => [
+                                            'title' => 'User Testing',
+                                            'data' => '7 days',
+                                            'type' => 'bg-primary-300',
+                                            'progress' => '84'
+                                        ]
+                                ];
+
+                                foreach ( $items as $item ){ ?>
+                                    <div class="d-flex">
+                                        <?php echo $item['title']; ?>
+                                        <span class="d-inline-block ml-auto"><?php echo $item['data']; ?></span>
+                                    </div>
+                                    <div class="progress progress-sm mb-3">
+                                        <div class="progress-bar <?php echo $item['type']; ?>" role="progressbar" style="width: <?php echo $item['progress']; ?>%;" aria-valuenow="<?php echo $item['progress']; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                <?php } ?>
+
                         </div>
                     </div>
                 </div>
