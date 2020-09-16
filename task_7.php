@@ -85,7 +85,7 @@
 
                                foreach ( $query as $person ){ ?>
 
-                                   <div class="<?php echo ( $person['banned'] == true ? 'banned' : '' ); ?> rounded-pill bg-white shadow-sm p-2 border-faded mr-3 d-flex flex-row align-items-center justify-content-center flex-shrink-0">
+                                   <div class="<?php echo ( $person['banned'] ? 'banned' : '' ); ?> rounded-pill bg-white shadow-sm p-2 border-faded mr-3 d-flex flex-row align-items-center justify-content-center flex-shrink-0">
                                        <img src="<?php echo $person['photo']; ?>" alt="<?php echo $person['name']; ?>" class="img-thumbnail img-responsive rounded-circle" style="width:5rem; height: 5rem;">
                                        <div class="ml-2 mr-3">
                                            <h5 class="m-0">
