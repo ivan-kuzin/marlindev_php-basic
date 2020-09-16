@@ -35,9 +35,19 @@
                         <div class="panel-content">
                             <div class="panel-content">
                                 <div class="form-group">
-                                    <form action="">
+                                    <?php
+                                        $host = 'localhost';
+                                        $user = 'root';
+                                        $password = 'root';
+                                        $db_name = 'test';
+                                        $connect = mysqli_connect($host, $user, $password, $db_name) or die("Не могу соединиться с MySQL.");
+                                        if ( isset( $_POST["text_value"] ) ) {
+                                            $query = mysqli_query($connect, "INSERT INTO task_9 (text) VALUES ('" . $_POST["text_value"] . "')") or die (mysqli_error($connect));
+                                        }
+                                    ?>
+                                    <form action="" method="post">
                                         <label class="form-label" for="simpleinput">Text</label>
-                                        <input type="text" id="simpleinput" class="form-control">
+                                        <input type="text" id="simpleinput" class="form-control" name="text_value">
                                         <button class="btn btn-success mt-3">Submit</button>
                                     </form>
                                 </div>
