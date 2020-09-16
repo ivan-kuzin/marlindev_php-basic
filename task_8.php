@@ -36,6 +36,8 @@
                                 Обычная таблица
                             </h5>
                             <div class="frame-wrap">
+
+
                                 <table class="table m-0">
                                     <thead>
                                         <tr>
@@ -47,52 +49,31 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>
-                                                <a href="show.php?id=" class="btn btn-info">Редактировать</a>
-                                                <a href="edit.php?id=" class="btn btn-warning">Изменить</a>
-                                                <a href="delete.php?id=" class="btn btn-danger">Удалить</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                            <td>
-                                                <a href="show.php?id=" class="btn btn-info">Редактировать</a>
-                                                <a href="edit.php?id=" class="btn btn-warning">Изменить</a>
-                                                <a href="delete.php?id=" class="btn btn-danger">Удалить</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                            <td>
-                                                <a href="show.php?id=" class="btn btn-info">Редактировать</a>
-                                                <a href="edit.php?id=" class="btn btn-warning">Изменить</a>
-                                                <a href="delete.php?id=" class="btn btn-danger">Удалить</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">4</th>
-                                            <td>Larry the Bird</td>
-                                            <td> Bird</td>
-                                            <td>@twitter</td>
-                                            <td>
-                                                <a href="show.php?id=" class="btn btn-info">Редактировать</a>
-                                                <a href="edit.php?id=" class="btn btn-warning">Изменить</a>
-                                                <a href="delete.php?id=" class="btn btn-danger">Удалить</a>
-                                            </td>
-                                        </tr>
+                                    <?php
+                                        $host = 'localhost';
+                                        $user = 'root';
+                                        $password = 'root';
+                                        $db_name = 'test';
+                                        $connect = mysqli_connect($host, $user, $password, $db_name) or die("Не могу соединиться с MySQL.");
+                                        $query = mysqli_query($connect, "SELECT id, first_name, last_name, username FROM task_8") or die (mysqli_error($connect));
+
+                                        foreach ($query as $person){ ?>
+                                            <tr>
+                                                 <th scope="row"><?php echo $person['id']; ?></th>
+                                                 <td><?php echo $person['first_name']; ?></td>
+                                                 <td><?php echo $person['last_name']; ?></td>
+                                                 <td>@<?php echo $person['username']; ?></td>
+                                                <td>
+                                                    <a href="show.php?id=<?php echo $person['id']; ?>" class="btn btn-info">Редактировать</a>
+                                                    <a href="edit.php?id=<?php echo $person['id']; ?>" class="btn btn-warning">Изменить</a>
+                                                    <a href="delete.php?id=<?php echo $person['id']; ?>" class="btn btn-danger">Удалить</a>
+                                                </td>
+                                            </tr>
+                                       <?php } ?>
                                     </tbody>
                                 </table>
+
+
                             </div>
                         </div>
                     </div>
